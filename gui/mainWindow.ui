@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGraphicsView" name="graphic_left">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>470</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>OpenHandCursor</cursorShape>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphic_right">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>40</y>
+      <width>470</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>OpenHandCursor</cursorShape>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="folderloader">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>5</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select folder</string>
+    </property>
+    <property name="popupMode">
+     <enum>QToolButton::InstantPopup</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="readbutton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>5</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Read</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="selectleft">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>545</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>left</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="selectright">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>545</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>right</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="folderlabel">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>5</y>
+      <width>300</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="savebutton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>5</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="statuslabel">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>5</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

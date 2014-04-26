@@ -1,0 +1,3 @@
+home_directory=/home/stefan/Bilder/Zug/test
+output_file=pictureranker.csv
+file_types=png,jpg,gif

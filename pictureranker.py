@@ -92,9 +92,9 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         # want same scaling for h and w: choose smaller that still fits
         max_height = 500-2
         max_width = 470-2
-        max_ratio= max_width*1.0/max_height
-        if old_ratio>=max_ratio: # picture is proportionally wider than canvas => fix width
-            new_height = int(max_height*old_ratio)
+        max_ratio = max_width*1.0/max_height
+        if old_ratio>=max_ratio: # wider than height => fix width
+            new_height = int(max_height*1.0/old_ratio)
             new_width = max_width
         else:
             new_height = max_height

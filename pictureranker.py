@@ -27,6 +27,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         self._dir = '.'
         self._outfilename = self.full_path('pictureranker.csv')
         self._accepted_file_ext = []
+        self._settings_file = 'settings.stk'
         
         self._read_settings()
         
@@ -112,6 +113,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         path_left = self._left_picture
         path_right = self._right_picture
         if (path_left!='' and path_right!=''):
+            # this is left out during first call, i.e. initialization
             self._count_displayed(path_left)
             self._count_displayed(path_right)
             if which=='left': path_selected = path_left
@@ -146,6 +148,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
                 if f.split('.')[-1].lower() in self._accepted_file_ext:
                     self._flist[f]=[0,0]
             self._N = len(self._flist)
+        self._update_pictures('init both')
             
     def _open_file(self):
         self._outfilename = QtGui.QFileDialog.getOpenFileName(self, directory=self._dir)#, filter='(*.csv *.txt)')
@@ -174,8 +177,8 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
     #                Picture Ranker settings
     ##############################################
     def _read_settings(self):
-        if os.path.exists('.prsettings'):
-            with open('.prsettings', 'rb') as s:
+        if os.path.exists(self._settings_file):
+            with open(self._settings_file, 'rb') as s:
                 for r in s:
                     rr = r.split('=')
                     if rr[0]=='home_directory':

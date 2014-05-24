@@ -40,6 +40,10 @@ $ sudo ln -s ..full path to this folder/PictureRanker/pictureranker.sh /usr/loca
 
 Cheate sheet:
 
-convert .ui to .py: pyuic4 qt_designer_name.ui -o my_gui_name.py
+convert .ui to .py:
+pyuic4 qt_designer_name.ui -o my_gui_name.py
+
+Create .exe for (and on) Windows:
+pyinstaller -F -w -i pictureranker.ico pictureranker.py
 
 

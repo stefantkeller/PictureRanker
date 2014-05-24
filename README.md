@@ -44,6 +44,6 @@ convert .ui to .py:
 pyuic4 qt_designer_name.ui -o my_gui_name.py
 
 Create .exe for (and on) Windows:
-pyinstaller -F -w -i pictureranker.ico pictureranker.py
+pyinstaller -F -w -i pictureranker64.ico pictureranker.py
 
 

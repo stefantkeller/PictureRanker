@@ -28,6 +28,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         self._outfilename = self.full_path('pictureranker.csv')
         self._accepted_file_ext = []
         self._settings_file = 'settings.stk'
+        self._about_file = 'about.stk'
         
         self._read_settings()
         
@@ -47,6 +48,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         self.connect(self.folderloader, QtCore.SIGNAL("clicked()"), self._open_folder)
         self.connect(self.readbutton, QtCore.SIGNAL("clicked()"), self._open_file)
         self.connect(self.savebutton, QtCore.SIGNAL("clicked()"), self._write_results)
+        self.connect(self.aboutbutton, QtCore.SIGNAL("clicked()"), self._about)
         self.connect(self.selectleft, QtCore.SIGNAL("clicked()"), self._update_pictures_left)
         self.connect(self.selectright, QtCore.SIGNAL("clicked()"), self._update_pictures_right)
         ########################################
@@ -191,6 +193,31 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
 #    def _write_settings(self):
 #        pass
     
+    ##############################################
+    #                About
+    ##############################################
+    def _about(self):
+        dialog = QtGui.QDialog(self) # choose no parent (instead of self) to get it with its own x in the corner
+        dialog.textEdit = QtGui.QTextEdit(dialog)
+        dialog.textEdit.setGeometry(QtCore.QRect(130, 20, 291, 291))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Courier 10 Pitch"))
+        dialog.textEdit.setFont(font)
+        dialog.textEdit.setReadOnly(True)
+        
+        dialog.ok_btn = QtGui.QPushButton("OK")
+        dialog.connect(dialog.ok_btn, QtCore.SIGNAL("clicked()"), dialog.close)
+        
+        layout = QtGui.QVBoxLayout()
+        layout.addWidget(dialog.textEdit)
+        layout.addWidget(dialog.ok_btn)
+        dialog.setLayout(layout)
+        
+        with open(self._about_file) as f:
+            txt = f.read()
+            dialog.textEdit.setText(txt)
+            dialog.exec_()
+        
 
 def main():
     app = QtGui.QApplication(sys.argv)

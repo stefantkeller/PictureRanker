@@ -1,0 +1,12 @@
+PictureRanker
+
+..is a tool to conveniently rank pictures in a folder.
+..comes with no warranty.
+..is licensed under GNU GPL V3.
+This license protects your freedom concerning this software.
+Particularly, it gives you legal permission to copy, distribute and/or modify it.
+You can find the source code at
+https://github.com/stefantkeller/PictureRanker
+
+Find the full license under
+https://github.com/stefantkeller/PictureRanker/blob/master/LICENSE

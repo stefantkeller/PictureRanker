@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Sat Apr 26 17:50:50 2014
+# Created: Sun May 25 13:10:00 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,11 +30,11 @@ class Ui_MainWindow(object):
         self.graphic_right.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.OpenHandCursor))
         self.graphic_right.setObjectName(_fromUtf8("graphic_right"))
         self.folderloader = QtGui.QToolButton(self.centralwidget)
-        self.folderloader.setGeometry(QtCore.QRect(20, 5, 150, 30))
+        self.folderloader.setGeometry(QtCore.QRect(20, 5, 110, 30))
         self.folderloader.setPopupMode(QtGui.QToolButton.InstantPopup)
         self.folderloader.setObjectName(_fromUtf8("folderloader"))
         self.readbutton = QtGui.QToolButton(self.centralwidget)
-        self.readbutton.setGeometry(QtCore.QRect(180, 5, 150, 30))
+        self.readbutton.setGeometry(QtCore.QRect(140, 5, 110, 30))
         self.readbutton.setObjectName(_fromUtf8("readbutton"))
         self.selectleft = QtGui.QToolButton(self.centralwidget)
         self.selectleft.setGeometry(QtCore.QRect(170, 545, 150, 30))
@@ -47,12 +47,15 @@ class Ui_MainWindow(object):
         self.folderlabel.setText(_fromUtf8(""))
         self.folderlabel.setObjectName(_fromUtf8("folderlabel"))
         self.savebutton = QtGui.QToolButton(self.centralwidget)
-        self.savebutton.setGeometry(QtCore.QRect(340, 5, 150, 30))
+        self.savebutton.setGeometry(QtCore.QRect(260, 5, 110, 30))
         self.savebutton.setObjectName(_fromUtf8("savebutton"))
         self.statuslabel = QtGui.QLabel(self.centralwidget)
         self.statuslabel.setGeometry(QtCore.QRect(830, 5, 150, 30))
         self.statuslabel.setText(_fromUtf8(""))
         self.statuslabel.setObjectName(_fromUtf8("statuslabel"))
+        self.aboutbutton = QtGui.QToolButton(self.centralwidget)
+        self.aboutbutton.setGeometry(QtCore.QRect(380, 5, 110, 30))
+        self.aboutbutton.setObjectName(_fromUtf8("aboutbutton"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -68,4 +71,5 @@ class Ui_MainWindow(object):
         self.selectleft.setText(QtGui.QApplication.translate("MainWindow", "left", None, QtGui.QApplication.UnicodeUTF8))
         self.selectright.setText(QtGui.QApplication.translate("MainWindow", "right", None, QtGui.QApplication.UnicodeUTF8))
         self.savebutton.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
+        self.aboutbutton.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
 

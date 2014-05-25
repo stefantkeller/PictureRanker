@@ -48,7 +48,7 @@
      <rect>
       <x>20</x>
       <y>5</y>
-      <width>150</width>
+      <width>110</width>
       <height>30</height>
      </rect>
     </property>
@@ -62,9 +62,9 @@
    <widget class="QToolButton" name="readbutton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>140</x>
       <y>5</y>
-      <width>150</width>
+      <width>110</width>
       <height>30</height>
      </rect>
     </property>
@@ -114,9 +114,9 @@
    <widget class="QToolButton" name="savebutton">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>260</x>
       <y>5</y>
-      <width>150</width>
+      <width>110</width>
       <height>30</height>
      </rect>
     </property>
@@ -135,6 +135,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="aboutbutton">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>5</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>About</string>
     </property>
    </widget>
   </widget>

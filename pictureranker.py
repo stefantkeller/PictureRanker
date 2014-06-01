@@ -30,6 +30,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         self._dir = '.'
         self._outfilename = 'pictureranker.csv'
         self._outfileloaded = False
+        self._outfileoverwrite = False # TODO: what when false? check read and write file!
         self._accepted_file_ext = []
         self._settings_file = 'settings.stk'
         self._about_file = 'about.stk'
@@ -151,6 +152,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         _dir = QtGui.QFileDialog.getExistingDirectory(self, directory=self._dir)
         if _dir!='': # i.e. actually something selected
             self._dir = _dir
+            self._left_picture, self._right_picture, self._flist = '', '', {} # reset potential old pictures from old folder
             self.folderlabel.setText('Folder: ..{0}'.format(self._dir[-min([len(self._dir),100]):]))
             self.folderloader.setText('Folder selected')
             # load filenames / init the list
@@ -175,8 +177,17 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
             for r in f:
                 rr = r.split(',')
                 #assert len(rr)==3, 'Input data looks different than expected.' # to logfile!
-                rr[1], rr[2] = int(rr[1]), int(rr[2])
-                print rr
+                try:
+                    #if rr[0].split('.')[-1].lower() in self._accepted_file_ext:
+                    if rr[0] in self._flist:
+                        # list initiated with only existing files during _open_folder()
+                        # if an entry in that file is no longer in the folder,
+                        # then the information about that one will be lost if
+                        # the flag self._outfileoverwrite==True
+                        self._flist[rr[0]] = [int(rr[1]), int(rr[2])]
+                except IndexError:
+                    print 'Problem while loading', rr # TODO: write to logfile instead
+        self._N = len(self._flist)
             
     def _write_results(self):
         outputname = self.outputname()
@@ -202,6 +213,10 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
                     if rr[0]=='file_types':
                         self._accepted_file_ext = rr[1].split(',')
                         self._accepted_file_ext[-1] = self._accepted_file_ext[-1][:-1] # remove '\n'
+                    if rr[0]=='overwrite_loaded_file':
+                        if rr[1]=='True':
+                            self._outfileoverwrite = True
+                            
 #    def _write_settings(self):
 #        pass
     

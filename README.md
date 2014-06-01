@@ -15,6 +15,7 @@ TODOs / wish list: (no particular order)
 1) settings:
     - read and write settings with gui
     - options for output file
+    - manual for options!
 2) evaluation:
     - to have numbers that show how many face offs a certain picture has won is good,
       but what do these numbers mean?
@@ -27,10 +28,9 @@ TODOs / wish list: (no particular order)
       sample collection... Therefore: choose a sensible probability distribution to work
       with. Poisson of some sort?)
 4) implement icon in gui
-5) bug when reloading folder?
-7) bug with reading .JPG, while no problem with .jpg? (at least on Windows?)
-8) correct scaling behavior when rescaling window (instead constant) i.e. make possible to maximize gui
-9) write errors to logfile (easier to attack problem when reported... )
+5) bug with reading .JPG, while no problem with .jpg? (at least on Windows?)
+6) correct scaling behavior when rescaling window (instead constant) i.e. make possible to maximize gui
+7) write errors to logfile (easier to attack problem when reported... )
 
 
 To install (at least under linux (at least ubuntu based)):

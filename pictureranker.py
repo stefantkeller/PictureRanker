@@ -3,6 +3,7 @@
 
 import sys
 import os
+from time import strftime, gmtime
 
 import numpy as np
 
@@ -13,6 +14,8 @@ try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
+    
+_daytime = lambda : strftime('%Y%m%d-%H%M%S_',gmtime()) 
 
 class Ranker(QtGui.QMainWindow, Ui_MainWindow):
     
@@ -25,7 +28,8 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         self._right_picture = ''
         self._left_picture = ''
         self._dir = '.'
-        self._outfilename = self.full_path('pictureranker.csv')
+        self._outfilename = 'pictureranker.csv'
+        self._outfileloaded = False
         self._accepted_file_ext = []
         self._settings_file = 'settings.stk'
         self._about_file = 'about.stk'
@@ -60,6 +64,12 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         return '{0}/{1}'.format(self._dir,path)
     def only_path_name(self,full_path):
         return full_path.split('/')[-1]
+    def outputname(self):
+        if not self._outfileloaded:
+            thename = self.full_path(_daytime()+self._outfilename)
+        else:
+            thename = self._outfilename
+        return thename
     
     ##############################################
     #                statistics
@@ -143,17 +153,18 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
             self._dir = _dir
             self.folderlabel.setText('Folder: ..{0}'.format(self._dir[-min([len(self._dir),100]):]))
             self.folderloader.setText('Folder selected')
-            self._outfilename = self.full_path(self.only_path_name(self._outfilename))
             # load filenames / init the list
             elements_in_dir=os.listdir(self._dir)
             for f in elements_in_dir:
                 if f.split('.')[-1].lower() in self._accepted_file_ext:
                     self._flist[f]=[0,0]
             self._N = len(self._flist)
-        self._update_pictures('init both')
+        # and now after selecting the folder, load pictures without further adue
+        self._update_pictures('init both') # note: option is nonsensical, but function knows what to do
             
     def _open_file(self):
         self._outfilename = QtGui.QFileDialog.getOpenFileName(self, directory=self._dir)#, filter='(*.csv *.txt)')
+        self._outfileloaded = True
         self._read_results()
             
     ##############################################
@@ -163,17 +174,18 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
         with open(self._outfilename, 'rb') as f:
             for r in f:
                 rr = r.split(',')
-                assert len(rr)==3, 'Input data looks different than expected.'
+                #assert len(rr)==3, 'Input data looks different than expected.' # to logfile!
                 rr[1], rr[2] = int(rr[1]), int(rr[2])
                 print rr
             
     def _write_results(self):
-        with open(self._outfilename, 'wb') as f:
+        outputname = self.outputname()
+        with open(outputname, 'wb') as f:
             for entry in self._flist:
                 f.write('{0},{1},{2}\n'.format(entry,
                                                self._flist[entry][0],
                                                self._flist[entry][1]))
-        self.statuslabel.setText('saved')
+        self.statuslabel.setText('saved: {0}'.format(outputname))
         
     ##############################################
     #                Picture Ranker settings
@@ -186,7 +198,7 @@ class Ranker(QtGui.QMainWindow, Ui_MainWindow):
                     if rr[0]=='home_directory':
                         self._dir = rr[1][:-1]
                     if rr[0]=='output_file':
-                        self._outfilename = self.full_path(rr[1][:-1])
+                        self._outfilename = rr[1][:-1]
                     if rr[0]=='file_types':
                         self._accepted_file_ext = rr[1].split(',')
                         self._accepted_file_ext[-1] = self._accepted_file_ext[-1][:-1] # remove '\n'

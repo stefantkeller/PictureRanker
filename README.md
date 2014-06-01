@@ -26,7 +26,11 @@ TODOs / wish list: (no particular order)
       expect P to win against R. (In this 3 picture example maybe not. But in a larger
       sample collection... Therefore: choose a sensible probability distribution to work
       with. Poisson of some sort?)
-
+4) implement icon in gui
+5) bug when reloading folder?
+7) bug with reading .JPG, while no problem with .jpg? (at least on Windows?)
+8) correct scaling behavior when rescaling window (instead constant) i.e. make possible to maximize gui
+9) write errors to logfile (easier to attack problem when reported... )
 
 
 To install (at least under linux (at least ubuntu based)):
